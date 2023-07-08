@@ -1,9 +1,9 @@
-name: Publish Image
+name: Publish-image
 
 on:
     workflow_run:
         workflows:
-            - "Run Test"
+            - "Run-tests"
         types:
             - completed
       
