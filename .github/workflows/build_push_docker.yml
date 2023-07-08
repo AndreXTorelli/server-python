@@ -14,7 +14,6 @@ jobs:
         - name: Build and push image
           run: |
             status = ${{ needs.job1.outputs.job1_completed }};
-            echo $status
             # if (status === 'success') {
 
             #     docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
