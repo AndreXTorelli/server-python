@@ -12,9 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Build and push image
-          if: ${{ needs.job1.outputs.job1_completed == 'true' }}
           run: |
-            docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
-            docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
-            docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
+            const status = '${{ needs.job1.outputs.job1_completed }}';
+            echo $status
+            # if (status === 'success') {
+
+            #     docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
+            #     docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
+            #     docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
+            
+            #     } else {
+            #     console.log('Previous workflow failed or not completed');
+            #     process.exit(1);
+            # }
             
