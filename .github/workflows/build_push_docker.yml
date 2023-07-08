@@ -3,9 +3,9 @@ name: Publish-image
 on:
     workflow_run:
         workflows:
-            - "Run-tests"
+            - "Run Tests"
         types:
-            - success
+            - completed
       
 jobs:
   build:
