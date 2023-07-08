@@ -1,4 +1,4 @@
-name: Run Tests
+name: Run-tests
 
 on:
   push:
@@ -25,4 +25,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        
+
+    - name: Save variable success
+      run: |
+        echo "::set-output name=status::success"

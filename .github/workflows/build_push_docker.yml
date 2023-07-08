@@ -3,7 +3,7 @@ name: Publish-image
 on:
     workflow_run:
         workflows:
-            - "Run Tests"
+            - "Run-tests"
         types:
             - completed
       
@@ -16,6 +16,14 @@ jobs:
     
         - name: Build and push image
           run: |
-            docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
-            docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
-            docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
+            const status = '${{ needs.Run-tests.outputs.status }}';
+            if (status === 'success') {
+
+                docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
+                docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
+                docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
+            
+                } else {
+                console.log('Previous workflow failed or not completed');
+                process.exit(1);
+            }
