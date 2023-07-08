@@ -26,5 +26,6 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Set output
-      run: echo "STATUS=true"
+    env: 
+      STATUS: 'OK'
+      
