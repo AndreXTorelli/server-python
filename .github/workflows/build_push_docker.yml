@@ -13,7 +13,7 @@ jobs:
     steps:
         - name: Build and push image
           run: |
-            if [[ "${{ env.STATUS }}" == "true" ]]; then
+            if $STATUS == "true" ]]; then
               docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
               docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
               docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
