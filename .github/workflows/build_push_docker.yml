@@ -5,7 +5,7 @@ on:
         workflows:
             - "Run-tests"
         types:
-            - completed
+            - success
       
 jobs:
   build:
