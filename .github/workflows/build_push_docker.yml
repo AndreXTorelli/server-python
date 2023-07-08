@@ -11,9 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - name: Build & Push Image
-          uses: actions/checkout@v2
-    
         - name: Build and push image
           run: |
             const status = '${{ needs.Run-tests.outputs.status }}';
