@@ -13,15 +13,14 @@ jobs:
     steps:
         - name: Build and push image
           run: |
-            status = ${{ needs.job1.outputs.job1_completed }};
-            # if (status === 'success') {
+            if ($status === 'true') {
 
-            #     docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
-            #     docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
-            #     docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
+                docker login -u ${{secrets.DOCKERHUB_USERNAME}} -p ${{secrets.DOCKERHUB_PASSWORD}}
+                docker image build -t ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest .
+                docker push ${{secrets.DOCKERHUB_USERNAME}}/server-python:latest
             
-            #     } else {
-            #     console.log('Previous workflow failed or not completed');
-            #     process.exit(1);
-            # }
+                } else {
+                console.log('Previous workflow failed or not completed');
+                process.exit(1);
+            }
             
