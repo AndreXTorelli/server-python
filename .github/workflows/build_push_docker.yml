@@ -1,9 +1,11 @@
-name: Run build and publish image
+name: Publish Image
 
 on:
-    push:
-        branches:
-            - 'main'
+    workflow_run:
+        workflows:
+            - "Run Test"
+        types:
+            - completed
       
 jobs:
   build:
