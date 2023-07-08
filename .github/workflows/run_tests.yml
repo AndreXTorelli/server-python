@@ -25,7 +25,3 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-
-    - name: Save variable success
-      run: |
-        echo "::set-output name=status::success"
