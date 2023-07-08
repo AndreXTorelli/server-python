@@ -2,7 +2,7 @@ name: Build and push Docker image upon release
 
 on:
   release:
-    types: [published] # , created, edited
+    types: [published]
 
 jobs:
   push_to_registry:
@@ -15,9 +15,9 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1 # Info: https://github.com/docker/build-push-action/tree/releases/v1#tags
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: ${{ secrets.DOCKERHUB_REPOSITORY }}
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
+          repository: ${{secrets.DOCKERHUB_REPOSITORY}}
           tag_with_ref: true # Info: https://github.com/docker/build-push-action/tree/releases/v1#tag_with_ref
           tag_with_sha: true # Info: https://github.com/docker/build-push-action/tree/releases/v1#tag_with_sha
           tags: latest
