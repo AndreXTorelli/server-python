@@ -13,7 +13,7 @@ jobs:
     steps:
         - name: Build and push image
           run: |
-            const status = '${{ needs.job1.outputs.job1_completed }}';
+            status = '${{ github }}';
             echo $status
             # if (status === 'success') {
 
